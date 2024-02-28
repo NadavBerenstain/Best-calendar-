@@ -1,0 +1,11 @@
+{
+  "name": "best-calendar-",
+  "version": "1.0.0",
+  "description": "easy to use calendar\r a calender that the user will be abale to cearte new events very fest in a usefull way",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
