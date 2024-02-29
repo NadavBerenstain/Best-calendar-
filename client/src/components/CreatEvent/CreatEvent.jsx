@@ -1,7 +1,73 @@
 import React from "react";
+import apiService from "../../ApiService";
+apiService;
 
-function CreatEvent() {
-  return <div>CreatEvent</div>;
+function CreatEvent({ Event, setEvent, setEventList }) {
+  function handleChange(e) {
+    const { name, value, type, checked } = e.target;
+    // For fields that are not checkboxes, use value. For checkboxes, use checked.
+    const fieldValue = type === "checkbox" ? checked : value;
+    setEvent({ ...Event, [name]: fieldValue });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const newEvent = await apiService.addEvent(Event);
+      setEventList((prev) => [...prev, newEvent]);
+    } catch (error) {
+      console.error("Error adding event:", error);
+    }
+    setEvent({ title: "", date: "", notes: "", important: false });
+  }
+
+  return (
+    <div>
+      <form type="submit" id="theForm" onSubmit={handleSubmit}>
+        <h2>Create a new event</h2>
+        <div className="title">
+          <label>TITLE</label>
+          <input
+            name="title"
+            type="input"
+            value={Event.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="date1">
+          <label>DATE</label>
+          <input
+            name="date"
+            type="datetime-local"
+            id="dateInput"
+            value={Event.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="notes">
+          <label>notes</label>
+          <input
+            name="notes"
+            type="input"
+            value={Event.notes}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="notes">
+          <label>IMPORTANT</label>
+          <input
+            name="important"
+            type="checkbox"
+            value={Event.important}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  );
 }
 
 export default CreatEvent;

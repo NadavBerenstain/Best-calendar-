@@ -1,0 +1,9 @@
+.eventsList{
+    width: 50%;
+    display: flex;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    /* justify-content: center; */
+    flex-direction: column;
+}
