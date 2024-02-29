@@ -12,7 +12,7 @@ exports.createEvent = async (req, res) => {
   }
 };
 
-exports.getList = async (req, res) => {
+exports.getSortedList = async (req, res) => {
   try {
     const events = await Events.find({});
     res.status(200);
@@ -24,3 +24,53 @@ exports.getList = async (req, res) => {
     res.status(400);
   }
 };
+
+exports.deleteEvent = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log("params:" + req.params);
+    const result = await Events.findByIdAndDelete(id);
+    if (!result) {
+      return res.status(404).send("Event not found.");
+    }
+    res.status(200).send(" deleted💪");
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+};
+
+exports.updateEvent = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updatedInfo = req.body;
+    const result = await Events.findOneAndUpdate({ _id: id }, updatedInfo, {
+      new: true,
+    });
+    if (!result) {
+      return res.status(404).send("Event not found.");
+    }
+    res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+};
+
+//////////////////////////////////////////////// apiservice:
+// const BASE_URL = "http://localhost:3000";
+
+// const apiService = {};
+
+// apiService.getList = () => {
+//   fetch(`${BASE_URL}/calendar`)
+//     .then((response) => response.json())
+//     .then((responseData) => {
+//       const nextEvents = responseData.filter(
+//         (event) => new Date(event.date).getTime() > Date.now()
+//       );
+//       return nextEvents;
+//     });
+// };
+
+// export default apiService;

@@ -1,8 +1,15 @@
 const express = require("express");
 const router = new express.Router();
-const { getList, createEvent } = require("./controllers");
+const {
+  getSortedList,
+  createEvent,
+  deleteEvent,
+  updateEvent,
+} = require("./controllers");
 
-router.get("/calendar", getList);
+router.get("/calendar", getSortedList);
 router.post("/calendar", createEvent);
+router.delete("/calendar/:id", deleteEvent);
+router.put("/calendar/:id", updateEvent);
 
 module.exports = router;
