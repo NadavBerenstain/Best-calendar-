@@ -56,21 +56,3 @@ exports.updateEvent = async (req, res) => {
     res.status(400).send(error);
   }
 };
-
-//////////////////////////////////////////////// apiservice:
-// const BASE_URL = "http://localhost:3000";
-
-// const apiService = {};
-
-// apiService.getList = () => {
-//   fetch(`${BASE_URL}/calendar`)
-//     .then((response) => response.json())
-//     .then((responseData) => {
-//       const nextEvents = responseData.filter(
-//         (event) => new Date(event.date).getTime() > Date.now()
-//       );
-//       return nextEvents;
-//     });
-// };
-
-// export default apiService;
