@@ -13,12 +13,14 @@ function CreatEvent({ Event, setEvent, setEventList }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const newEvent = await apiService.addEvent(Event);
-      setEventList((prev) => [...prev, newEvent]);
+      await apiService.addEvent(Event);
+      const updatedEventsList = await apiService.getList();
+      setEventList(updatedEventsList);
     } catch (error) {
       console.error("Error adding event:", error);
     }
     setEvent({ title: "", date: "", notes: "", important: false });
+    await apiService.getList();
   }
 
   return (

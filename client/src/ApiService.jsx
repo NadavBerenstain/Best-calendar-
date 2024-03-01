@@ -30,10 +30,42 @@ apiService.addEvent = async (eventData) => {
     if (!res.ok) {
       throw new Error("bad response");
     }
-    // setEventList(prev => {[...prev, response.json()]});
     return await res.json(); //??
   } catch (error) {
     throw new Error(error);
   }
 };
+
+apiService.deleteEvent = async (id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      throw new Error("bad response");
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+apiService.updateEvent = async (id, updatedEventData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedEventData),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to update event.");
+    }
+
+    return updatedEventData;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export default apiService;

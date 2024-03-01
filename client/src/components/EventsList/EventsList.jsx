@@ -1,22 +1,22 @@
 import React from "react";
 import "./EventsList.css";
 import { v4 as uuidv4 } from "uuid";
+import Event from "../Event/Event";
+import FilterListBar from "../FilterListBar/FilterListBar";
 
-function EventsList({ eventsList }) {
+export default function EventsList({ eventsList, setEventsList }) {
   return (
-    <div key={uuidv4()} id="list" className="eventsList">
+    <div id="list" className="eventsList">
+      <FilterListBar></FilterListBar>
       {eventsList.map((event) => {
-        // console.log(event);
         return (
-          <div key={uuidv4()}>
-            <h2 className="title">{event.title}</h2>
-            <div className="notes">{event.notes}</div>
-            <div className="date">{event.date}</div>
-          </div>
+          <Event
+            key={event._id}
+            event={event}
+            setEventsList={setEventsList}
+          ></Event>
         );
       })}
     </div>
   );
 }
-
-export default EventsList;

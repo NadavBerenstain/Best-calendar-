@@ -34,7 +34,10 @@ function App() {
         setEvent={setEvent}
         setEventList={setEventsList}
       ></CreatEvent>
-      <EventsList eventsList={eventsList}></EventsList>
+      <EventsList
+        eventsList={eventsList}
+        setEventsList={setEventsList}
+      ></EventsList>
     </>
   );
 }
