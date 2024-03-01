@@ -1,6 +1,5 @@
 import React from "react";
 import apiService from "../../ApiService";
-apiService;
 
 function CreatEvent({ Event, setEvent, setEventList }) {
   function handleChange(e) {
@@ -62,7 +61,7 @@ function CreatEvent({ Event, setEvent, setEventList }) {
           <input
             name="important"
             type="checkbox"
-            value={Event.important}
+            checked={Event.important}
             onChange={handleChange}
           />
         </div>

@@ -7,7 +7,10 @@ import FilterListBar from "../FilterListBar/FilterListBar";
 export default function EventsList({ eventsList, setEventsList }) {
   return (
     <div id="list" className="eventsList">
-      <FilterListBar></FilterListBar>
+      <FilterListBar
+        eventsList={eventsList}
+        setEventsList={setEventsList}
+      ></FilterListBar>
       {eventsList.map((event) => {
         return (
           <Event

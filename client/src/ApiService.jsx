@@ -8,10 +8,14 @@ apiService.getList = () => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json();
+      return response;
     })
-    .then((responseData) => {
-      return responseData;
+    .then((response) => response.json())
+    .then((data) => {
+      const futureEvents = data.filter(
+        (event) => new Date(event.date).getTime() > Date.now()
+      );
+      return futureEvents;
     })
     .catch((error) => {
       console.error("Error fetching data: ", error);
@@ -58,7 +62,7 @@ apiService.updateEvent = async (id, updatedEventData) => {
       },
       body: JSON.stringify(updatedEventData),
     });
-    if (!response.ok) {
+    if (!res.ok) {
       throw new Error("Failed to update event.");
     }
 
