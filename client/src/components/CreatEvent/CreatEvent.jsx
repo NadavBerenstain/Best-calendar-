@@ -1,7 +1,7 @@
 import React from "react";
 import apiService from "../../ApiService";
 
-function CreatEvent({ Event, setEvent, setEventList }) {
+function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     // For fields that are not checkboxes, use value. For checkboxes, use checked.
@@ -15,6 +15,7 @@ function CreatEvent({ Event, setEvent, setEventList }) {
       await apiService.addEvent(Event);
       const updatedEventsList = await apiService.getList();
       setEventList(updatedEventsList);
+      setBaseList(updatedEventsList);
     } catch (error) {
       console.error("Error adding event:", error);
     }

@@ -3,7 +3,7 @@ import "./Event.css";
 import apiService from "../../ApiService";
 import { useEffect, useState } from "react";
 
-export default function Event({ event, setEventsList }) {
+export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
@@ -16,6 +16,7 @@ export default function Event({ event, setEventsList }) {
       await apiService.deleteEvent(id);
       const resData = await apiService.getList();
       setEventsList(resData);
+      setBaseList(resData);
     } catch (error) {
       throw new Error(error);
     }

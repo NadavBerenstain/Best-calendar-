@@ -13,6 +13,7 @@ function App() {
     important: false,
   });
   const [eventsList, setEventsList] = useState([]);
+  const [baseList, setBaseList] = useState([]);
 
   const BASE_URL = "http://localhost:3000/calendar";
 
@@ -21,6 +22,7 @@ function App() {
       .getList()
       .then((responseData) => {
         setEventsList(responseData);
+        setBaseList(responseData);
       })
       .catch((error) => {
         console.error("Failed to fetch events:", error);
@@ -31,12 +33,15 @@ function App() {
       <Nav></Nav>
       <CreatEvent
         Event={Event}
+        setBaseList={setBaseList}
         setEvent={setEvent}
         setEventList={setEventsList}
       ></CreatEvent>
       <EventsList
         eventsList={eventsList}
         setEventsList={setEventsList}
+        baseList={baseList}
+        setBaseList={setBaseList}
       ></EventsList>
     </>
   );
