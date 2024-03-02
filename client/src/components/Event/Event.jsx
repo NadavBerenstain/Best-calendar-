@@ -2,6 +2,7 @@ import React from "react";
 import "./Event.css";
 import apiService from "../../ApiService";
 import { useEffect, useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
 import * as DOMPurify from "dompurify"; //use this!!!
 
 export default function Event({ event, setEventsList, setBaseList }) {
@@ -44,7 +45,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
 
     const readyMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return `${hours}:${readyMinutes}  - ${month}/${days}/${year}`;
+    return `${hours}:${readyMinutes}  - ${days}/${month}/${year}`;
   }
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
@@ -64,28 +65,33 @@ export default function Event({ event, setEventsList, setBaseList }) {
   /////////////////////////////////////////////////////////////////////////
   return (
     <div
-      id="itemCon"
+      id="allevent"
       className={event.important ? "importantEvent" : "regularEvent"}
     >
+      <button id="eventDeleteButton" onClick={() => deleteEvent(event._id)}>
+        <MdDeleteForever id="bin" />
+      </button>
       <h2
+        id="eventTitle"
         contentEditable={true}
         onBlur={handleBlur("title", setTitle)}
         name="title"
         dangerouslySetInnerHTML={{ __html: title }}
       ></h2>
       <div
+        id="eventNotes"
         contentEditable={true}
         onBlur={handleBlur("notes", setNotes)}
         name="notes"
         dangerouslySetInnerHTML={{ __html: notes }}
       ></div>
       <div
+        id="eventDate"
         contentEditable={true}
         onBlur={handleBlur("date", setDate)}
         name="date"
         dangerouslySetInnerHTML={{ __html: date }}
       ></div>
-      <button onClick={() => deleteEvent(event._id)}>X</button>
     </div>
   );
 }

@@ -1,7 +1,38 @@
-#itemCon{
+#allevent{
     /* height: 50px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid black;
+    border-radius: 2rem;
+    margin: 1rem;
+    position: relative;
+
+}
+#eventTitle{
+    display: flex;
+    justify-content: center;
+}
+#eventNotes{
+    display: flex;
+    justify-content: center;
+}
+#eventDate{
+    display: flex;
+    justify-content: center;
+}
+#eventDeleteButton{
+    width: 1rem;
+    position: absolute;
+    left: 46rem;
+    background-color: transparent;
+    border: none;
 }
 .importantEvent{
     background-color: aqua;
+}
+#bin{
+    display: flex;
+    justify-content: center;
+    font-size: large;
 }
