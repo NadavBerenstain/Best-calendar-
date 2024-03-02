@@ -5,18 +5,16 @@ import apiService from "../../ApiService";
 export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   const [inputVal, setInputVal] = useState(5);
   const [baseImportant, setBaseImportrant] = useState([]);
+  const [importantClicked, setImportantClicked] = useState(false);
 
   function sortImportants() {
     setEventsList(baseList.filter((event) => event.important === true));
-    if (
-      eventsList.length !==
-      eventsList.filter((event) => event.important === true).length
-    ) {
-      setBaseImportrant(eventsList.filter((event) => event.important === true));
-    }
+    setBaseImportrant(eventsList.filter((event) => event.important === true));
+    setImportantClicked(true);
   }
   async function showAllEvents() {
     setEventsList(await apiService.getList());
+    setImportantClicked(false);
   }
   function showNumEvents(newValue) {
     setEventsList(baseList.slice(0, newValue));
@@ -27,18 +25,12 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   function handleInputChange(e) {
     const newValue = Number(e.target.value);
     setInputVal(newValue);
-    if (
-      eventsList.length ===
-      eventsList.filter((event) => event.important === true).length
-    ) {
+    if (importantClicked) {
       showNumOfImportantEvents(newValue);
     } else {
       showNumEvents(newValue);
     }
   }
-  useEffect(() => {
-    showNumEvents();
-  }, []);
   return (
     <div id="listBar">
       <h3 id="barTitle">filter events:</h3>
@@ -53,12 +45,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
             onChange={handleInputChange}
             type="number"
             min={1}
-            max={
-              eventsList.length ===
-              eventsList.filter((event) => event.important === true).length
-                ? baseImportant.length
-                : baseList.length
-            }
+            max={importantClicked ? baseImportant.length : baseList.length}
           />
         </div>
         <button onClick={showAllEvents}>Show all</button>

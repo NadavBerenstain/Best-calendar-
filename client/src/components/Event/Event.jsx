@@ -2,6 +2,7 @@ import React from "react";
 import "./Event.css";
 import apiService from "../../ApiService";
 import { useEffect, useState } from "react";
+import * as DOMPurify from "dompurify"; //use this!!!
 
 export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
