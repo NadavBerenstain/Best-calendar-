@@ -1,7 +1,8 @@
 import React from "react";
+import "./Nav.css";
 
 function Nav() {
-  return <div>Nav</div>;
+  return <h2 id="theNav">MY CALENDAR</h2>;
 }
 
 export default Nav;

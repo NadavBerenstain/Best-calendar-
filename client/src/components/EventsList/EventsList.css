@@ -1,8 +1,11 @@
 .eventsList{
-    width: 50%;
     display: flex;
     margin-left: 10px;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid lightskyblue;
     flex-direction: column;
+}
+#filterListBar{
+   /* border-bottom: ; */
+  box-shadow: 0px 2px gray;
 }

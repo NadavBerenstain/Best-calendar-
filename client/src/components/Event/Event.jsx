@@ -32,12 +32,25 @@ export default function Event({ event, setEventsList, setBaseList }) {
     }
   }
   ///////////////////////////////////////////////////////////
+  function formatDateString(dateBefore) {
+    const date = new Date(dateBefore);
+
+    const hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+    const days = date.getUTCDate();
+    const month = date.getUTCMonth() + 1;
+    const year = date.getUTCFullYear();
+
+    const readyMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    return `${hours}:${readyMinutes}  - ${month}/${days}/${year}`;
+  }
+  ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
     return (e) => {
       const updatedValue = e.target.innerText;
       setValue(updatedValue);
       const updatedEventData = { ...event, [name]: updatedValue };
-      console.log(event);
       updateEvent(event._id, updatedEventData);
     };
   }
@@ -45,7 +58,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
   useEffect(() => {
     setTitle(event.title);
     setNotes(event.notes);
-    setDate(event.date);
+    setDate(formatDateString(event.date));
   }, [event.title, event.notes, event.date]);
   /////////////////////////////////////////////////////////////////////////
   return (

@@ -12,11 +12,13 @@ export default function EventsList({
 }) {
   return (
     <div id="list" className="eventsList">
-      <FilterListBar
-        baseList={baseList}
-        eventsList={eventsList}
-        setEventsList={setEventsList}
-      ></FilterListBar>
+      <div id="filterListBar">
+        <FilterListBar
+          baseList={baseList}
+          eventsList={eventsList}
+          setEventsList={setEventsList}
+        ></FilterListBar>
+      </div>
       {eventsList.map((event) => {
         return (
           <Event

@@ -1,3 +1,23 @@
+
+#listBar{
+    height: 3rem;
+ display: flex;
+ /* background-color: aquamarine; */
+ flex-direction: column;
+}
+#barTitle{
+ display: flex;
+ justify-content: center;
+ 
+}
+#barFunc{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    /* align-items: center; */
+    flex-direction: row;
+}
+
 .numOfEvents{
     width: 2.5rem;
 }

@@ -29,21 +29,27 @@ function App() {
       });
   }, []);
   return (
-    <>
+    <div id="allApp">
       <Nav></Nav>
-      <CreatEvent
-        Event={Event}
-        setBaseList={setBaseList}
-        setEvent={setEvent}
-        setEventList={setEventsList}
-      ></CreatEvent>
+      <div id="mainApp">
+        <div id="list">
       <EventsList
         eventsList={eventsList}
         setEventsList={setEventsList}
         baseList={baseList}
         setBaseList={setBaseList}
       ></EventsList>
-    </>
+        </div>
+        <div id="form">
+      <CreatEvent
+        Event={Event}
+        setBaseList={setBaseList}
+        setEvent={setEvent}
+        setEventList={setEventsList}
+      ></CreatEvent>
+        </div>
+      </div>
+    </div>
   );
 }
 

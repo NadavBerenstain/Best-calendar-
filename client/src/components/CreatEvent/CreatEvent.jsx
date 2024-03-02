@@ -1,5 +1,6 @@
 import React from "react";
 import apiService from "../../ApiService";
+import "./CreatEvent.css";
 
 function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   function handleChange(e) {
@@ -24,51 +25,53 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   }
 
   return (
-    <div>
-      <form type="submit" id="theForm" onSubmit={handleSubmit}>
-        <h2>Create a new event</h2>
-        <div className="title">
-          <label>TITLE</label>
-          <input
-            name="title"
-            type="input"
-            value={Event.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="date1">
-          <label>DATE</label>
-          <input
-            name="date"
-            type="datetime-local"
-            id="dateInput"
-            value={Event.date}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="notes">
-          <label>notes</label>
-          <input
-            name="notes"
-            type="input"
-            value={Event.notes}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="notes">
-          <label>IMPORTANT</label>
-          <input
-            name="important"
-            type="checkbox"
-            checked={Event.important}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Create</button>
-      </form>
-    </div>
+    // <div id="theForm">
+    <form id="theForm" type="submit" onSubmit={handleSubmit}>
+      <h3>New event</h3>
+      <div id="formTitle" className="title">
+        <label>TITLE</label>
+        <input
+          name="title"
+          type="input"
+          value={Event.title}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div id="formDate" className="date1">
+        <label>DATE</label>
+        <input
+          name="date"
+          type="datetime-local"
+          id="dateInput"
+          value={Event.date}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div id="formNotes" className="notes">
+        <label>NOTES</label>
+        <input
+          name="notes"
+          type="input"
+          value={Event.notes}
+          onChange={handleChange}
+        />
+      </div>
+      <div id="formImportant" className="notes">
+        <label>IMPORTANT</label>
+        <input
+          name="important"
+          type="checkbox"
+          checked={Event.important}
+          onChange={handleChange}
+        />
+      </div>
+      <button id="theButton" type="submit">
+        Create
+      </button>
+    </form>
+    // </div>
   );
 }
 
