@@ -3,8 +3,8 @@ import "./FilterListBar.css";
 import apiService from "../../ApiService";
 
 export default function FilterListBar({ eventsList, setEventsList, baseList }) {
-  const [inputVal, setInputVal] = useState();
-  const [baseImportant, setBaseImportrant] = useState(0);
+  const [inputVal, setInputVal] = useState(5);
+  const [baseImportant, setBaseImportrant] = useState([]);
 
   function sortImportants() {
     setEventsList(baseList.filter((event) => event.important === true));
@@ -52,7 +52,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
             value={inputVal}
             onChange={handleInputChange}
             type="number"
-            min={0}
+            min={1}
             max={
               eventsList.length ===
               eventsList.filter((event) => event.important === true).length
