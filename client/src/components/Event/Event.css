@@ -2,7 +2,7 @@
     /* height: 50px; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     border: 1px solid black;
     border-radius: 2rem;
     margin: 1rem;
@@ -19,12 +19,21 @@
 }
 #eventDate{
     display: flex;
+    position: absolute;
+    left: 1rem;
+    /* justify-content: center; */
+    flex-direction: column
+}
+#eventDate h4{
+    display: flex;
     justify-content: center;
 }
 #eventDeleteButton{
     width: 1rem;
+    display: flex;
     position: absolute;
     left: 46rem;
+    top: 0.8rem;
     background-color: transparent;
     border: none;
 }

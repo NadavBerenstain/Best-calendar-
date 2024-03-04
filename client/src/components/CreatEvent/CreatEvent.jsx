@@ -25,7 +25,6 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   }
 
   return (
-    // <div id="theForm">
     <form id="theForm" type="submit" onSubmit={handleSubmit}>
       <h3>New event</h3>
       <div id="formTitle" className="title">
@@ -71,7 +70,6 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
         Create
       </button>
     </form>
-    // </div>
   );
 }
 

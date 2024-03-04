@@ -45,7 +45,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
 
     const readyMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return `${hours}:${readyMinutes}  - ${days}/${month}/${year}`;
+    return `<h2>${days}/${month}/${year}</h2> <h4>${hours}:${readyMinutes}</h4>`;
   }
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
@@ -71,20 +71,22 @@ export default function Event({ event, setEventsList, setBaseList }) {
       <button id="eventDeleteButton" onClick={() => deleteEvent(event._id)}>
         <MdDeleteForever id="bin" />
       </button>
-      <h2
-        id="eventTitle"
-        contentEditable={true}
-        onBlur={handleBlur("title", setTitle)}
-        name="title"
-        dangerouslySetInnerHTML={{ __html: title }}
-      ></h2>
-      <div
-        id="eventNotes"
-        contentEditable={true}
-        onBlur={handleBlur("notes", setNotes)}
-        name="notes"
-        dangerouslySetInnerHTML={{ __html: notes }}
-      ></div>
+      <div id="eventBody">
+        <h2
+          id="eventTitle"
+          contentEditable={true}
+          onBlur={handleBlur("title", setTitle)}
+          name="title"
+          dangerouslySetInnerHTML={{ __html: title }}
+        ></h2>
+        <div
+          id="eventNotes"
+          contentEditable={true}
+          onBlur={handleBlur("notes", setNotes)}
+          name="notes"
+          dangerouslySetInnerHTML={{ __html: notes }}
+        ></div>
+      </div>
       <div
         id="eventDate"
         contentEditable={true}

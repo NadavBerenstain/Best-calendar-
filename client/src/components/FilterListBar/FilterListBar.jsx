@@ -30,9 +30,13 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
       showNumEvents(newValue);
     }
   }
+  // function formatTimestamp(timestamp) {
+
+  // }
   return (
     <div id="listBar">
       <h3 id="barTitle">filter events:</h3>
+      {/* <h4>today is: {formatTimestamp(Date.now())}</h4> */}
 
       <div id="barFunc">
         <button className="filtterButtons" onClick={sortImportants}>
