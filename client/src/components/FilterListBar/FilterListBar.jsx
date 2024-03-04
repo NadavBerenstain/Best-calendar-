@@ -2,25 +2,23 @@ import React, { useState } from "react";
 import "./FilterListBar.css";
 import moment from "moment";
 
-export default function FilterListBar({
-  eventsList,
-  setEventsList,
-  baseList,
-  fromDate,
-  setFromDate,
-  untilDate,
-  setUntilDate,
-}) {
+export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   const [inputVal, setInputVal] = useState(5);
   const [baseImportant, setBaseImportrant] = useState([]);
   const [importantClicked, setImportantClicked] = useState(false);
+  const [fromDate, setFromDate] = useState("");
+  const [untilDate, setUntilDate] = useState("");
 
   function sortImportants() {
+    setFromDate("");
+    setUntilDate("");
     setEventsList(baseList.filter((event) => event.important === true));
     setBaseImportrant(baseList.filter((event) => event.important === true));
     setImportantClicked(true);
   }
   function showAllEvents() {
+    setFromDate("");
+    setUntilDate("");
     setEventsList(baseList);
     setImportantClicked(false);
   }

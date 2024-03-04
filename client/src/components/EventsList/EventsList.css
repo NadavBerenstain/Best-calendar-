@@ -2,7 +2,7 @@
     display: flex;
     margin-left: 10px;
     border-radius: 10px;
-    border: 2px solid lightskyblue;
+    /* border: 2px solid lightskyblue; */
     flex-direction: column;
 }
 #filterListBar{
