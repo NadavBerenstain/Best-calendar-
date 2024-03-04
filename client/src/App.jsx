@@ -10,10 +10,12 @@ function App() {
     title: "",
     date: "",
     notes: "",
+    theme: "",
     important: false,
   });
   const [eventsList, setEventsList] = useState([]);
   const [baseList, setBaseList] = useState([]);
+  const [themesList, setThemesList] = useState([]);
 
   useEffect(() => {
     apiService
@@ -21,6 +23,8 @@ function App() {
       .then((responseData) => {
         setEventsList(responseData);
         setBaseList(responseData);
+        const themes = responseData.map((event) => event.theme);
+        setThemesList(themes);
       })
       .catch((error) => {
         console.error("Failed to fetch events:", error);
@@ -36,6 +40,8 @@ function App() {
             setEventsList={setEventsList}
             baseList={baseList}
             setBaseList={setBaseList}
+            themesList={themesList}
+            setThemesList={setThemesList}
           ></EventsList>
         </div>
         <div id="form">
@@ -44,6 +50,8 @@ function App() {
             setBaseList={setBaseList}
             setEvent={setEvent}
             setEventList={setEventsList}
+            themesList={themesList}
+            setThemesList={setThemesList}
           ></CreatEvent>
         </div>
       </div>

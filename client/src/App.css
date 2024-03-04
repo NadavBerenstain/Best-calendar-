@@ -1,6 +1,7 @@
 #allApp{
     display: flex;
     flex-direction: column;
+    background-color: rgb(217, 192, 169);
 }
 #mainApp{
     display: flex;

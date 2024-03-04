@@ -9,6 +9,8 @@ export default function EventsList({
   setEventsList,
   baseList,
   setBaseList,
+  themesList,
+  setThemesList,
 }) {
   return (
     <div id="list" className="eventsList">
@@ -17,6 +19,8 @@ export default function EventsList({
           baseList={baseList}
           eventsList={eventsList}
           setEventsList={setEventsList}
+          themesList={themesList}
+          setThemesList={setThemesList}
         ></FilterListBar>
       </div>
       {eventsList.map((event) => {

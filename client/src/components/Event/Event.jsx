@@ -9,6 +9,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
+  const [theme, setTheme] = useState(event.theme);
   const [date, setDate] = useState(event.date);
 
   /////////////////////////////////////////////////////
@@ -71,6 +72,13 @@ export default function Event({ event, setEventsList, setBaseList }) {
       <button id="eventDeleteButton" onClick={() => deleteEvent(event._id)}>
         <MdDeleteForever id="bin" />
       </button>
+      <div
+        id="eventTheme"
+        contentEditable={true}
+        onBlur={handleBlur("theme", setTheme)}
+        name="theme"
+        dangerouslySetInnerHTML={{ __html: theme }}
+      ></div>
       <div id="eventBody">
         <h2
           id="eventTitle"
@@ -86,6 +94,13 @@ export default function Event({ event, setEventsList, setBaseList }) {
           name="notes"
           dangerouslySetInnerHTML={{ __html: notes }}
         ></div>
+        {/* <div
+          id="eventTheme"
+          contentEditable={true}
+          onBlur={handleBlur("theme", setTheme)}
+          name="theme"
+          dangerouslySetInnerHTML={{ __html: theme }}
+        ></div> */}
       </div>
       <div
         id="eventDate"

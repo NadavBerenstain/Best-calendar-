@@ -19,7 +19,7 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
     } catch (error) {
       console.error("Error adding event:", error);
     }
-    setEvent({ title: "", date: "", notes: "", important: false });
+    setEvent({ title: "", date: "", notes: "", theme: "", important: false });
     await apiService.getList();
   }
 
@@ -56,7 +56,16 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
           onChange={handleChange}
         />
       </div>
-      <div id="formImportant" className="notes">
+      <div id="formTheme" className="theme">
+        <label>THEME</label>
+        <input
+          name="theme"
+          type="input"
+          value={Event.theme}
+          onChange={handleChange}
+        />
+      </div>
+      <div id="formImportant">
         <label>IMPORTANT</label>
         <input
           name="important"

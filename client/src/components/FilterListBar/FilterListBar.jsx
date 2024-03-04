@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./FilterListBar.css";
-import moment from "moment";
 
 export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   const [inputVal, setInputVal] = useState(5);
@@ -26,7 +25,6 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
     setEventsList(baseList.slice(0, newValue));
   }
   function showNumOfImportantEvents(newValue) {
-    sortFrom();
     setEventsList(baseImportant.slice(0, newValue));
   }
   function handleInputChange(e) {
@@ -39,6 +37,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
     }
   }
   function sortFrom(e) {
+    console.log("event:", e);
     setFromDate(e.target.value);
     setEventsList(eventsList.filter((event) => event.date > e.target.value));
   }

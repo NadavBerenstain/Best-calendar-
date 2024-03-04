@@ -37,6 +37,12 @@
     background-color: transparent;
     border: none;
 }
+#eventTheme{
+    display: flex;
+    position: absolute;
+    right: 5rem;
+    top: 0.1rem;
+}
 .importantEvent{
     background-color: aqua;
 }
