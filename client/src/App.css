@@ -1,7 +1,6 @@
 #allApp{
     display: flex;
     flex-direction: column;
-    background-color: rgb(217, 192, 169);
 }
 #mainApp{
     display: flex;
@@ -11,10 +10,7 @@
    
 }
 #form{
-    /* width: 18%; */
-    margin: 1rem 3rem 0px 0.5rem;
-    /* border-radius: 1rem; */
-    /* border: 1px solid lightskyblue; to delete */
+    margin: 1rem 3rem 0px 0.5rem;   
 }
 #list{
     width: 50rem;

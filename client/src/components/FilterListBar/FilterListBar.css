@@ -1,31 +1,49 @@
-
-#listBar{
-    height: 3rem;
- display: flex;
- /* background-color: aquamarine; */
- flex-direction: column;
-}
-#barTitle{
- display: flex;
- justify-content: center;
- 
-}
 #barFunc{
     display: flex;
     width: 100%;
     justify-content: space-around;
-    /* align-items: center; */
     flex-direction: row;
+}
+#amoutInput{
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+#themesDropdown{
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+ 
+#barTitle{
+ display: flex;
+ justify-content: center;
 }
 
 .numOfEvents{
     width: 2.5rem;
 }
 .filtterButtons{
-    background-color: rgb(110, 192, 237);
+    background-color: #265073;
     border-radius: 3px;
-    opacity: 30%;
+    opacity: 50%;
+    margin-bottom: 0.5rem;
+    color: aliceblue;
 }
 .filtterButtons:hover{
     opacity: 100%;
+}
+#from{
+    margin-bottom: 0.5rem;
+}
+#until{
+    margin-bottom: 0.5rem;
+}
+#amout{
+    margin-top: 1rem;
+}
+#findTheme{
+    margin-top: 1rem;
+}
+#timeRange input{
+ border-radius: 5px;
+ border: 1px solid gray;
 }
