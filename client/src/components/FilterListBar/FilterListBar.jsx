@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import "./FilterListBar.css";
 import moment from "moment";
 
-export default function FilterListBar({ eventsList, setEventsList, baseList }) {
+export default function FilterListBar({
+  eventsList,
+  setEventsList,
+  baseList,
+  fromDate,
+  setFromDate,
+  untilDate,
+  setUntilDate,
+}) {
   const [inputVal, setInputVal] = useState(5);
   const [baseImportant, setBaseImportrant] = useState([]);
   const [importantClicked, setImportantClicked] = useState(false);
@@ -20,6 +28,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
     setEventsList(baseList.slice(0, newValue));
   }
   function showNumOfImportantEvents(newValue) {
+    sortFrom();
     setEventsList(baseImportant.slice(0, newValue));
   }
   function handleInputChange(e) {
@@ -31,21 +40,41 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
       showNumEvents(newValue);
     }
   }
-  function formatTimestamp(theDate) {}
-  function sortByRange(from, until) {
-    setEventsList(
-      baseList.filter((event) => event.date < until && event.date > from)
-    );
+  function sortFrom(e) {
+    setFromDate(e.target.value);
+    setEventsList(eventsList.filter((event) => event.date > e.target.value));
   }
+  function sortUntil(e) {
+    setUntilDate(e.target.value);
+    setEventsList(eventsList.filter((event) => event.date < e.target.value));
+  }
+
   return (
     <div id="listBar">
       <h3 id="barTitle">filter events:</h3>
-      {/* <h4>today is: {Date().slice(0, 15)}</h4> */}
 
       <div id="barFunc">
         <button className="filtterButtons" onClick={sortImportants}>
           Iportants
         </button>
+
+        <label>from</label>
+        <input
+          name="from"
+          type="datetime-local"
+          id="fromDate"
+          value={fromDate}
+          onChange={(e) => sortFrom(e)}
+        />
+        <label>until</label>
+        <input
+          name="until"
+          type="datetime-local"
+          id="untilDate"
+          value={untilDate}
+          onChange={(e) => sortUntil(e)}
+        />
+
         <div>
           <label>Display amount:</label>
           <input

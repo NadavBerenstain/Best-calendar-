@@ -14,6 +14,8 @@ function App() {
   });
   const [eventsList, setEventsList] = useState([]);
   const [baseList, setBaseList] = useState([]);
+  const [fromDate, setFromDate] = useState("");
+  const [untilDate, setUntilDate] = useState("");
 
   useEffect(() => {
     apiService
@@ -36,6 +38,10 @@ function App() {
             setEventsList={setEventsList}
             baseList={baseList}
             setBaseList={setBaseList}
+            fromDate={fromDate}
+            setFromDate={setFromDate}
+            untilDate={untilDate}
+            setUntilDate={setUntilDate}
           ></EventsList>
         </div>
         <div id="form">

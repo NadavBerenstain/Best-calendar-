@@ -5,7 +5,6 @@ import "./CreatEvent.css";
 function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
-    // For fields that are not checkboxes, use value. For checkboxes, use checked.
     const fieldValue = type === "checkbox" ? checked : value;
     setEvent({ ...Event, [name]: fieldValue });
   }

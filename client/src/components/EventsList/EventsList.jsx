@@ -9,6 +9,10 @@ export default function EventsList({
   setEventsList,
   baseList,
   setBaseList,
+  fromDate,
+  setFromDate,
+  untilDate,
+  setUntilDate,
 }) {
   return (
     <div id="list" className="eventsList">
@@ -17,6 +21,10 @@ export default function EventsList({
           baseList={baseList}
           eventsList={eventsList}
           setEventsList={setEventsList}
+          fromDate={fromDate}
+          setFromDate={setFromDate}
+          untilDate={untilDate}
+          setUntilDate={setUntilDate}
         ></FilterListBar>
       </div>
       {eventsList.map((event) => {
