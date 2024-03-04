@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./FilterListBar.css";
-import apiService from "../../ApiService";
 
 export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   const [inputVal, setInputVal] = useState(5);
@@ -12,8 +11,8 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
     setBaseImportrant(eventsList.filter((event) => event.important === true));
     setImportantClicked(true);
   }
-  async function showAllEvents() {
-    setEventsList(await apiService.getList());
+  function showAllEvents() {
+    setEventsList(baseList);
     setImportantClicked(false);
   }
   function showNumEvents(newValue) {
@@ -36,19 +35,23 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
       <h3 id="barTitle">filter events:</h3>
 
       <div id="barFunc">
-        <button onClick={sortImportants}>Iportants</button>
+        <button className="filtterButtons" onClick={sortImportants}>
+          Iportants
+        </button>
         <div>
           <label>Display amount:</label>
           <input
             className="numOfEvents"
-            value={inputVal}
+            value={eventsList < inputVal ? eventsList : inputVal}
             onChange={handleInputChange}
             type="number"
             min={1}
             max={importantClicked ? baseImportant.length : baseList.length}
           />
         </div>
-        <button onClick={showAllEvents}>Show all</button>
+        <button className="filtterButtons" onClick={showAllEvents}>
+          Show all
+        </button>
       </div>
     </div>
   );

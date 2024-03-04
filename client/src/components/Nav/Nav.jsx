@@ -9,6 +9,8 @@ import {
 } from "@supabase/auth-helpers-react";
 
 export default function Nav() {
+  ///////////////////////////////////////
+  // add my logo
   /////////////////////////////////////////////////// for google
   const session = useSession(); // token! when sesstion exists: have a user
   const supabase = useSupabaseClient(); // talk to supabase

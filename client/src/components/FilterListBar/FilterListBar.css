@@ -21,3 +21,11 @@
 .numOfEvents{
     width: 2.5rem;
 }
+.filtterButtons{
+    background-color: rgb(110, 192, 237);
+    border-radius: 3px;
+    opacity: 30%;
+}
+.filtterButtons:hover{
+    opacity: 100%;
+}
