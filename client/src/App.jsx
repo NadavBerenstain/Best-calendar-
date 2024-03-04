@@ -15,8 +15,6 @@ function App() {
   const [eventsList, setEventsList] = useState([]);
   const [baseList, setBaseList] = useState([]);
 
-  const BASE_URL = "http://localhost:3000/calendar";
-
   useEffect(() => {
     apiService
       .getList()

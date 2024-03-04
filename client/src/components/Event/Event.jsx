@@ -35,6 +35,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
   }
   ///////////////////////////////////////////////////////////
   function formatDateString(dateBefore) {
+    console.log("dateBefore:", dateBefore);
     const date = new Date(dateBefore);
 
     const hours = date.getUTCHours();

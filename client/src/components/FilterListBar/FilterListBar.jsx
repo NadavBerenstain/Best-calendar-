@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FilterListBar.css";
+import moment from "moment";
 
 export default function FilterListBar({ eventsList, setEventsList, baseList }) {
   const [inputVal, setInputVal] = useState(5);
@@ -8,7 +9,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
 
   function sortImportants() {
     setEventsList(baseList.filter((event) => event.important === true));
-    setBaseImportrant(eventsList.filter((event) => event.important === true));
+    setBaseImportrant(baseList.filter((event) => event.important === true));
     setImportantClicked(true);
   }
   function showAllEvents() {
@@ -30,13 +31,16 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
       showNumEvents(newValue);
     }
   }
-  // function formatTimestamp(timestamp) {
-
-  // }
+  function formatTimestamp(theDate) {}
+  function sortByRange(from, until) {
+    setEventsList(
+      baseList.filter((event) => event.date < until && event.date > from)
+    );
+  }
   return (
     <div id="listBar">
       <h3 id="barTitle">filter events:</h3>
-      {/* <h4>today is: {formatTimestamp(Date.now())}</h4> */}
+      {/* <h4>today is: {Date().slice(0, 15)}</h4> */}
 
       <div id="barFunc">
         <button className="filtterButtons" onClick={sortImportants}>
@@ -46,7 +50,7 @@ export default function FilterListBar({ eventsList, setEventsList, baseList }) {
           <label>Display amount:</label>
           <input
             className="numOfEvents"
-            value={eventsList < inputVal ? eventsList : inputVal}
+            value={inputVal}
             onChange={handleInputChange}
             type="number"
             min={1}
