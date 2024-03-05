@@ -24,8 +24,9 @@ function App() {
         setEventsList(responseData);
         setBaseList(responseData);
         const themes = responseData.map((event) => event.theme);
-        // Combine the current themesList with new themes and remove duplicates immediately
-        const updatedThemesList = [...new Set([...themesList, ...themes])];
+        const updatedThemesList = [
+          ...new Set([...themesList, ...themes].flat()),
+        ];
         setThemesList(updatedThemesList);
       })
       .catch((error) => {

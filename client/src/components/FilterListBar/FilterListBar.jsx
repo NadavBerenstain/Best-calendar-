@@ -56,7 +56,7 @@ export default function FilterListBar({
     setEventsList(eventsList.filter((event) => event.date < e.target.value));
   }
   function sortByTheme(theme) {
-    setEventsList(baseList.filter((event) => event.theme === theme));
+    setEventsList(baseList.filter((event) => event.theme.includes(theme))); // event.theme.include(theme)
   }
   /////////////////////////////////////////////////////////////////////////////////
   function handleThemeSelection(e) {
