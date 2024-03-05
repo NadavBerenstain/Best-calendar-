@@ -3,14 +3,14 @@ import "./Event.css";
 import apiService from "../../ApiService";
 import { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import * as DOMPurify from "dompurify"; //use this after course
+import { parseISO, formatISO } from "date-fns"; // check func
+// import * as DOMPurify from "dompurify"; //use this after course
 
 export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
   const [themes, setThemes] = useState(event.theme);
-  // const [eachTag, setEachTag] = useState("");
   const [date, setDate] = useState(event.date);
 
   /////////////////////////////////////////////////////
@@ -27,6 +27,12 @@ export default function Event({ event, setEventsList, setBaseList }) {
   }
   ///////////////////////////////////////////////////////
   async function updateEvent(id, updatedEventData) {
+    if (updatedEventData.date) {
+      updatedEventData = {
+        ...updatedEventData,
+        date: new Date(updatedEventData.date).toISOString(),
+      };
+    }
     try {
       await apiService.updateEvent(id, updatedEventData);
       const resData = await apiService.getList();
@@ -47,31 +53,49 @@ export default function Event({ event, setEventsList, setBaseList }) {
 
     const readyMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return `<h2>${days}/${month}/${year}</h2> <h4>${hours}:${readyMinutes}</h4>`;
+    return `<h2>${month}/${days}/${year}</h2> <h4>${hours}:${readyMinutes}</h4>`;
   }
   ////////////////////////////////////////////////////////////////
-  const handleThemeEdit = (index, newTheme) => {
+  const handleThemeEdit = async (index, newTheme) => {
     const updatedThemes = [...themes];
     updatedThemes[index] = newTheme;
     setThemes(updatedThemes);
-    // Here, you would also call an API or service to update the event data in your backend
+    const updatedEventData = {
+      ...event,
+      theme: updatedThemes,
+    };
+    try {
+      await apiService.updateEvent(event._id, updatedEventData);
+      const resData = await apiService.getList();
+      setEventsList(resData);
+    } catch (error) {
+      console.error("Failed to update event:", error);
+    }
   };
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
     return (e) => {
-      const updatedValue = e.target.innerText;
+      let updatedValue = e.target.innerText.trim();
+      if (name === "date") {
+        try {
+          const newDate = new Date(updatedValue).toISOString();
+        } catch (error) {
+          console.error("Failed to parse datetime:", error);
+
+          return;
+        }
+      }
+
       setValue(updatedValue);
       const updatedEventData = { ...event, [name]: updatedValue };
       updateEvent(event._id, updatedEventData);
     };
   }
-  /////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     setTitle(event.title);
     setNotes(event.notes);
     setDate(formatDateString(event.date));
   }, [event.title, event.notes, event.date]);
-  /////////////////////////////////////////////////////////////////////////
   return (
     <div
       id="allevent"
@@ -80,19 +104,6 @@ export default function Event({ event, setEventsList, setBaseList }) {
       <button id="eventDeleteButton" onClick={() => deleteEvent(event._id)}>
         <MdDeleteForever id="bin" />
       </button>
-      {/* <div id="tags">
-        {themes.map((tag, index) => (
-          <div
-            key={`${event._id}-${index}`}
-            className="eventTags"
-            contentEditable
-            onBlur={(e) => handleThemeEdit(index, e.currentTarget.textContent)}
-            suppressContentEditableWarning={true}
-          >
-            {tag}
-          </div>
-        ))}
-      </div> */}
       <div id="eventBody">
         <h2
           id="eventTitle"
@@ -121,7 +132,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
           <div
             key={`${event._id}-${index}`}
             className="eventTags"
-            contentEditable
+            contentEditable={true}
             onBlur={(e) => handleThemeEdit(index, e.currentTarget.textContent)}
             suppressContentEditableWarning={true}
           >
@@ -131,25 +142,4 @@ export default function Event({ event, setEventsList, setBaseList }) {
       </div>
     </div>
   );
-}
-{
-  /* {eventsList.map((event) => {
-    return (
-      <Event
-        key={event._id}
-        setBaseList={setBaseList}
-        event={event}
-        setEventsList={setEventsList}
-      ></Event>
-    );
-  })} */
-}
-{
-  /* <div
-    id="eventTheme"
-    contentEditable={true}
-    onBlur={handleBlur("theme", setTheme)}
-    name="theme"
-    dangerouslySetInnerHTML={{ __html: theme }}
-  ></div> */
 }
