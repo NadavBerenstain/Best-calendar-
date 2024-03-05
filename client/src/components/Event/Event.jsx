@@ -6,24 +6,62 @@ import { MdDeleteForever } from "react-icons/md";
 import { parseISO, formatISO } from "date-fns"; // check func
 // import * as DOMPurify from "dompurify"; //use this after course
 
-export default function Event({ event, setEventsList, setBaseList }) {
+export default function Event({
+  event,
+  setEventsList,
+  setBaseList,
+  baseList,
+  themesList,
+  setThemesList,
+}) {
   ////////////////////////////////////////////////////
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
   const [themes, setThemes] = useState(event.theme);
-  const [themesList, setThemeList] = useState([]);
+
   const [date, setDate] = useState(event.date);
 
   /////////////////////////////////////////////////////
 
   async function deleteEvent(id) {
     try {
+      // Find the event to be deleted and its themes
+      const eventToDelete = baseList.find((event) => event._id === id);
+      if (!eventToDelete) {
+        console.error("Event not found");
+        return;
+      }
+
+      let uniqueThemes = [];
+
+      // Check if each theme of the event to delete is unique in the baseList
+      eventToDelete.theme.forEach((themeToDelete) => {
+        const isUniqueTheme = baseList.every((event) => {
+          return event._id === id || !event.theme.includes(themeToDelete);
+        });
+
+        if (isUniqueTheme) {
+          uniqueThemes.push(themeToDelete);
+        }
+      });
+
+      // Delete the event
       await apiService.deleteEvent(id);
       const resData = await apiService.getList();
+
+      // Update the event lists
       setEventsList(resData);
       setBaseList(resData);
+
+      // Remove unique themes from themesList
+      if (uniqueThemes.length) {
+        const updatedThemesList = themesList.filter(
+          (theme) => !uniqueThemes.includes(theme)
+        );
+        setThemesList(updatedThemesList);
+      }
     } catch (error) {
-      throw new Error(error);
+      console.error("Error deleting event:", error);
     }
   }
   ///////////////////////////////////////////////////////

@@ -27,9 +27,12 @@ export default function EventsList({
         return (
           <Event
             key={event._id}
+            baseList={baseList}
             setBaseList={setBaseList}
             event={event}
             setEventsList={setEventsList}
+            themesList={themesList}
+            setThemesList={setThemesList}
           ></Event>
         );
       })}

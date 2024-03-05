@@ -2,7 +2,14 @@ import React from "react";
 import apiService from "../../ApiService";
 import "./CreatEvent.css";
 
-function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
+function CreatEvent({
+  Event,
+  setEvent,
+  setEventList,
+  setBaseList,
+  themesList,
+  setThemesList,
+}) {
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
     const fieldValue = type === "checkbox" ? checked : value;
@@ -16,6 +23,15 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
       const updatedEventsList = await apiService.getList();
       setEventList(updatedEventsList);
       setBaseList(updatedEventsList);
+      // setThemesList(themesList);
+      const newThemes = Event.theme
+        .split(",")
+        .map((theme) => theme.trim())
+        .filter((theme) => theme);
+      const updatedThemesList = Array.from(
+        new Set([...themesList, ...newThemes])
+      );
+      setThemesList(updatedThemesList);
     } catch (error) {
       console.error("Error adding event:", error);
     }
