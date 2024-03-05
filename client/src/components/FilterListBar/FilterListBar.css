@@ -49,12 +49,15 @@
     margin-bottom: 0.5rem;
 }
 #amout{
-    margin-top: 1rem;
+    margin-top: 4px;
 }
 #findTheme{
-    margin-top: 1rem;
+    margin-top: 5px;
 }
 #timeRange input{
  border-radius: 5px;
  border: 1px solid gray;
+}
+#timeRange{
+    
 }

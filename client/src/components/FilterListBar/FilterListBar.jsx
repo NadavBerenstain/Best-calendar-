@@ -121,7 +121,7 @@ export default function FilterListBar({
         </select>
       </div>
       <button className="filtterButtons" onClick={sortImportants}>
-        Iportants
+        Important
       </button>
       <button className="filtterButtons" onClick={showAllEvents}>
         Show all

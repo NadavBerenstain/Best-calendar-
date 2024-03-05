@@ -23,12 +23,18 @@
     justify-content: center;
 }
 #eventDate{
+    width: 150px;
+    height: 100%;
+    bottom: 0;
+    left: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    left: 1rem;
     flex-direction: column;
-    background-color: #dbd8d879;
-    border-radius: 1rem;
+    background-color: #dbd8d8a9;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
     z-index: 2;
 }
 #eventDate h4{
@@ -52,6 +58,10 @@
 }
 .importantEvent{
     background-color: #2D9596 !important; 
+}
+.importantEvent #eventDate{
+    background-color: rgba(46, 46, 250, 0.387);
+    color: white;
 }
 #bin{
     display: flex;

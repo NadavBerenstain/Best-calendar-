@@ -73,7 +73,7 @@ function CreatEvent({
         />
       </div>
       <div id="formTheme" className="theme">
-        <label>TAGS SEPARATE BY COMA</label>
+        <label>TAGS COMMA SEPARATED</label>
         <input
           name="theme"
           type="input"
