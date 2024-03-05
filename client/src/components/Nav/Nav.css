@@ -3,6 +3,16 @@
     justify-content: center;
     color: rgb(37, 62, 186);
 }
+#firstDate{
+    width: 600px;
+}
+#allGoogle{
+    width: 100vm;
+    height: 100vm;
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+}
 /* from here testing google*/
 /* #login{
     width: "100%";

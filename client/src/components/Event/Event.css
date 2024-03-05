@@ -21,8 +21,7 @@
     display: flex;
     position: absolute;
     left: 1rem;
-    /* justify-content: center; */
-    flex-direction: column
+    flex-direction: column;
 }
 #eventDate h4{
     display: flex;
@@ -45,6 +44,7 @@
 }
 .importantEvent{
     background-color: #2D9596;
+    color: whitesmoke;
 }
 #bin{
     display: flex;

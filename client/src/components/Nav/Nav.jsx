@@ -15,14 +15,14 @@ export default function Nav() {
   const session = useSession(); // token! when sesstion exists: have a user
   const supabase = useSupabaseClient(); // talk to supabase
   const { isLoading } = useSessionContext();
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDescription] = useState("");
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -57,9 +57,10 @@ export default function Nav() {
       {
         method: "post",
         headers: {
+          // key: "AIzaSyCeQJCXWbJ5qdQuFmDnlhHlJAu1gXB1FLY",
           Authorization: "Bearer" + session.provider_token,
         },
-        body: Json.stringify(GoogleEvent),
+        body: JSON.stringify(GoogleEvent),
       }
     )
       .then((data) => {
@@ -71,17 +72,17 @@ export default function Nav() {
       });
   }
 
-  console.log("this is the session:", session);
+  // console.log("this is the session:", session);
   //////////////////////////////
   return (
     <div id="login">
       {session ? (
-        <>
+        <div id="allGoogle">
           <h2>hey there {session.user.email}</h2>
           <p>start of testing google event</p>
-          <DateTimePicker onChange={setStart} value={start} />
+          <DateTimePicker id="firstDate" onChange={setStart} value={start} />
           <p>end of testing google event</p>
-          <DateTimePicker onChange={setEnd} value={end} />
+          <DateTimePicker id="secDate" onChange={setEnd} value={end} />
           <p>event name</p>
           <input
             onClick={(e) => {
@@ -110,7 +111,7 @@ export default function Nav() {
           >
             Sign out
           </button>
-        </>
+        </div>
       ) : (
         <>
           <button

@@ -24,6 +24,7 @@ function App() {
         setEventsList(responseData);
         setBaseList(responseData);
         const themes = responseData.map((event) => event.theme);
+        themes.filter((theme, index) => themes.indexof(theme) === index);
         setThemesList(themes);
       })
       .catch((error) => {

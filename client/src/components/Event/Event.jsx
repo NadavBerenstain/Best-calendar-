@@ -3,7 +3,7 @@ import "./Event.css";
 import apiService from "../../ApiService";
 import { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import * as DOMPurify from "dompurify"; //use this!!!
+import * as DOMPurify from "dompurify"; //use this after course
 
 export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
@@ -94,13 +94,6 @@ export default function Event({ event, setEventsList, setBaseList }) {
           name="notes"
           dangerouslySetInnerHTML={{ __html: notes }}
         ></div>
-        {/* <div
-          id="eventTheme"
-          contentEditable={true}
-          onBlur={handleBlur("theme", setTheme)}
-          name="theme"
-          dangerouslySetInnerHTML={{ __html: theme }}
-        ></div> */}
       </div>
       <div
         id="eventDate"

@@ -6,7 +6,7 @@ export default function FilterListBar({
   setEventsList,
   baseList,
   themesList,
-  setThemesList,
+  // setThemesList,
 }) {
   const [inputVal, setInputVal] = useState(5);
   const [baseImportant, setBaseImportrant] = useState([]);
