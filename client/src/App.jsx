@@ -24,12 +24,15 @@ function App() {
         setEventsList(responseData);
         setBaseList(responseData);
         const themes = responseData.map((event) => event.theme);
-        setThemesList(themes);
+        // Combine the current themesList with new themes and remove duplicates immediately
+        const updatedThemesList = [...new Set([...themesList, ...themes])];
+        setThemesList(updatedThemesList);
       })
       .catch((error) => {
         console.error("Failed to fetch events:", error);
       });
   }, []);
+
   return (
     <div id="allApp">
       {/* <Nav></Nav> */}

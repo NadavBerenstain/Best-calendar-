@@ -11,6 +11,7 @@ export default function Event({ event, setEventsList, setBaseList }) {
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
   const [themes, setThemes] = useState(event.theme);
+  const [themesList, setThemeList] = useState([]);
   const [date, setDate] = useState(event.date);
 
   /////////////////////////////////////////////////////
@@ -57,6 +58,8 @@ export default function Event({ event, setEventsList, setBaseList }) {
   }
   ////////////////////////////////////////////////////////////////
   const handleThemeEdit = async (index, newTheme) => {
+    // setThemeList(...themesList, newTheme);
+    // console.log(newTheme);
     const updatedThemes = [...themes];
     updatedThemes[index] = newTheme;
     setThemes(updatedThemes);
