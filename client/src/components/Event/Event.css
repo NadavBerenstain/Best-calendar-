@@ -36,7 +36,7 @@
     background-color: transparent;
     border: none;
 }
-#eventTheme{
+.eventTheme{
     display: flex;
     position: absolute;
     right: 5rem;
@@ -50,4 +50,19 @@
     display: flex;
     justify-content: center;
     font-size: large;
+}
+#tags{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+}
+.eventTags{
+    background-color: orange;
+    margin: 3px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }

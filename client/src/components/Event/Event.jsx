@@ -9,7 +9,8 @@ export default function Event({ event, setEventsList, setBaseList }) {
   ////////////////////////////////////////////////////
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
-  const [theme, setTheme] = useState(event.theme);
+  const [themes, setThemes] = useState(event.theme);
+  // const [eachTag, setEachTag] = useState("");
   const [date, setDate] = useState(event.date);
 
   /////////////////////////////////////////////////////
@@ -48,6 +49,13 @@ export default function Event({ event, setEventsList, setBaseList }) {
 
     return `<h2>${days}/${month}/${year}</h2> <h4>${hours}:${readyMinutes}</h4>`;
   }
+  ////////////////////////////////////////////////////////////////
+  const handleThemeEdit = (index, newTheme) => {
+    const updatedThemes = [...themes];
+    updatedThemes[index] = newTheme;
+    setThemes(updatedThemes);
+    // Here, you would also call an API or service to update the event data in your backend
+  };
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
     return (e) => {
@@ -72,13 +80,19 @@ export default function Event({ event, setEventsList, setBaseList }) {
       <button id="eventDeleteButton" onClick={() => deleteEvent(event._id)}>
         <MdDeleteForever id="bin" />
       </button>
-      <div
-        id="eventTheme"
-        contentEditable={true}
-        onBlur={handleBlur("theme", setTheme)}
-        name="theme"
-        dangerouslySetInnerHTML={{ __html: theme }}
-      ></div>
+      {/* <div id="tags">
+        {themes.map((tag, index) => (
+          <div
+            key={`${event._id}-${index}`}
+            className="eventTags"
+            contentEditable
+            onBlur={(e) => handleThemeEdit(index, e.currentTarget.textContent)}
+            suppressContentEditableWarning={true}
+          >
+            {tag}
+          </div>
+        ))}
+      </div> */}
       <div id="eventBody">
         <h2
           id="eventTitle"
@@ -102,6 +116,40 @@ export default function Event({ event, setEventsList, setBaseList }) {
         name="date"
         dangerouslySetInnerHTML={{ __html: date }}
       ></div>
+      <div id="tags">
+        {themes.map((tag, index) => (
+          <div
+            key={`${event._id}-${index}`}
+            className="eventTags"
+            contentEditable
+            onBlur={(e) => handleThemeEdit(index, e.currentTarget.textContent)}
+            suppressContentEditableWarning={true}
+          >
+            {tag}
+          </div>
+        ))}
+      </div>
     </div>
   );
+}
+{
+  /* {eventsList.map((event) => {
+    return (
+      <Event
+        key={event._id}
+        setBaseList={setBaseList}
+        event={event}
+        setEventsList={setEventsList}
+      ></Event>
+    );
+  })} */
+}
+{
+  /* <div
+    id="eventTheme"
+    contentEditable={true}
+    onBlur={handleBlur("theme", setTheme)}
+    name="theme"
+    dangerouslySetInnerHTML={{ __html: theme }}
+  ></div> */
 }

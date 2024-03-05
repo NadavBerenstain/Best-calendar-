@@ -1,9 +1,11 @@
 const { Events } = require("./models");
 
 exports.createEvent = async (req, res) => {
-  console.log(`here: ${req.body}`);
   try {
-    const result = await Events.create(req.body);
+    const { theme } = req.body;
+    const parsedThemes = theme.split(",").map((el) => el.trim());
+    const result = await Events.create({ ...req.body, theme: parsedThemes });
+    console.log("result theme:", result.theme);
     res.status(201);
     res.json(result);
   } catch (error) {

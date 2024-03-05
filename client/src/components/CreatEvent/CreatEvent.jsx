@@ -2,7 +2,6 @@ import React from "react";
 import apiService from "../../ApiService";
 import "./CreatEvent.css";
 
-
 function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -20,7 +19,7 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
     } catch (error) {
       console.error("Error adding event:", error);
     }
-    setEvent({ title: "", date: "", notes: "", theme: "", important: false });
+    setEvent({ title: "", date: "", notes: "", theme: [], important: false });
     await apiService.getList();
   }
 
@@ -58,7 +57,7 @@ function CreatEvent({ Event, setEvent, setEventList, setBaseList }) {
         />
       </div>
       <div id="formTheme" className="theme">
-        <label>THEME</label>
+        <label>TAGS SEPARATE BY COMA</label>
         <input
           name="theme"
           type="input"
