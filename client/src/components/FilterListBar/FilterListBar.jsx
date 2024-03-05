@@ -68,9 +68,6 @@ export default function FilterListBar({
   return (
     // <div id="listBar">
     <div id="barFunc">
-      <button className="filtterButtons" onClick={sortImportants}>
-        Iportants
-      </button>
       <div id="timeRange">
         <div id="from">
           <label>from: </label>
@@ -123,6 +120,9 @@ export default function FilterListBar({
           ))}
         </select>
       </div>
+      <button className="filtterButtons" onClick={sortImportants}>
+        Iportants
+      </button>
       <button className="filtterButtons" onClick={showAllEvents}>
         Show all
       </button>

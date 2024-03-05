@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div id="allApp">
-      {/* <Nav></Nav> */}
+      <Nav></Nav>
       <div id="mainApp">
         <div id="list">
           <EventsList

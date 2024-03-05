@@ -22,14 +22,25 @@
     width: 2.5rem;
 }
 .filtterButtons{
-    background-color: #265073;
-    border-radius: 3px;
-    opacity: 50%;
+    height: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px !important ;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    /* opacity: 50%; */
     margin-bottom: 0.5rem;
-    color: aliceblue;
+    /* color: aliceblue; */
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 .filtterButtons:hover{
-    opacity: 100%;
+    opacity: 70%;
 }
 #from{
     margin-bottom: 0.5rem;

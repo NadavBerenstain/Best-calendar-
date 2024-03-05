@@ -82,7 +82,7 @@ function CreatEvent({
         />
       </div>
       <div id="formImportant">
-        <label>IMPORTANT</label>
+        <label id="importantLabel">IMPORTANT</label>
         <input
           name="important"
           type="checkbox"

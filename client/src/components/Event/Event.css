@@ -3,15 +3,20 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid black;
-    border-radius: 2rem;
+    border-radius: 1rem;
     margin: 1rem;
     position: relative;
+    padding: 10px;
+    background-color: #f1f1f1;
 
+}
+.importantEvent #eventBody{
+    color: whitesmoke;
 }
 #eventTitle{
     display: flex;
     justify-content: center;
+   
 }
 #eventNotes{
     display: flex;
@@ -22,6 +27,9 @@
     position: absolute;
     left: 1rem;
     flex-direction: column;
+    background-color: #dbd8d879;
+    border-radius: 1rem;
+    z-index: 2;
 }
 #eventDate h4{
     display: flex;
@@ -43,8 +51,7 @@
     top: 0.1rem;
 }
 .importantEvent{
-    background-color: #2D9596;
-    color: whitesmoke;
+    background-color: #2D9596 !important; 
 }
 #bin{
     display: flex;
@@ -55,13 +62,17 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    padding: 5px;
     gap: 5px;
 }
 .eventTags{
-    background-color: orange;
+    background-color: #F1FADA;
     margin: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
     border: 1px solid gray;
     border-radius: 10px;
+    border: 1px solid gray;
     display: flex;
     justify-content: center;
     flex-direction: row;
