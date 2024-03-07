@@ -52,7 +52,6 @@ export default function Event({
       // Update the event lists
       setEventsList(resData);
       setBaseList(resData);
-
       // Remove unique themes from themesList
       if (uniqueThemes.length) {
         const updatedThemesList = themesList.filter(
@@ -115,28 +114,19 @@ export default function Event({
   };
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
-    return (e) => {
+    console.log("eventsList updated");
+    async (e) => {
       let updatedValue = e.target.innerText.trim();
-      if (name === "date") {
-        try {
-          const newDate = new Date(updatedValue).toISOString();
-        } catch (error) {
-          console.error("Failed to parse datetime:", error);
-
-          return;
-        }
-      }
-
       setValue(updatedValue);
       const updatedEventData = { ...event, [name]: updatedValue };
-      updateEvent(event._id, updatedEventData);
+      await updateEvent(event._id, updatedEventData);
     };
   }
   useEffect(() => {
     setTitle(event.title);
     setNotes(event.notes);
     setDate(formatDateString(event.date));
-  }, [event.title, event.notes, event.date]);
+  }, [event]);
   return (
     <div
       id="allevent"

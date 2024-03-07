@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterListBar.css";
 
 export default function FilterListBar({
@@ -6,7 +6,6 @@ export default function FilterListBar({
   setEventsList,
   baseList,
   themesList,
-  // setThemesList,
 }) {
   const [inputVal, setInputVal] = useState(5);
   const [baseImportant, setBaseImportrant] = useState([]);
@@ -15,6 +14,8 @@ export default function FilterListBar({
   const [untilDate, setUntilDate] = useState("");
   ////////////////////////////////////////////////////////
   const [selectedTheme, setSelectedTheme] = useState("");
+
+  ///////////////////////////////////////////////////
 
   function sortImportants() {
     setFromDate("");
@@ -64,6 +65,10 @@ export default function FilterListBar({
     setSelectedTheme(newTheme);
     sortByTheme(newTheme);
   }
+  ///////////////////////////////////////////////////////////////////////////
+  function handleFromChange (e){
+    
+  }
   ///////////////////////////////////////////////////////////////////////////////////////
   return (
     // <div id="listBar">
@@ -92,7 +97,7 @@ export default function FilterListBar({
       </div>
 
       <div id="amout">
-        <label>Display amount:</label>
+        <label>Present tasks:</label>
         <input
           id="amoutInput"
           className="numOfEvents"
@@ -104,7 +109,7 @@ export default function FilterListBar({
         />
       </div>
       <div id="findTheme">
-        <label> Find theme:</label>
+        <label> Tags:</label>
         <select
           id="themesDropdown"
           value={selectedTheme}
