@@ -109,20 +109,23 @@ export default function Event({
       await apiService.updateEvent(event._id, updatedEventData);
       const resData = await apiService.getList();
       setEventsList(resData);
+      setBaseList(resData);
     } catch (error) {
       console.error("Failed to update event:", error);
     }
   };
   ///////////////////////////////////////////////////////////
   function handleBlur(name, setValue) {
-    console.log("eventsList updated");
-    async (e) => {
+    return async (e) => {
+      console.log("here");
       let updatedValue = e.target.innerText.trim();
       setValue(updatedValue);
+      console.log("updatedValue: ", updatedValue);
       const updatedEventData = { ...event, [name]: updatedValue };
       await updateEvent(event._id, updatedEventData);
     };
   }
+
   useEffect(() => {
     setTitle(event.title);
     setNotes(event.notes);
