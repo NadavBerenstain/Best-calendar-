@@ -75,6 +75,7 @@ export default function Event({
       await apiService.updateEvent(id, updatedEventData);
       const resData = await apiService.getList();
       setEventsList(resData);
+      setBaseList(resData);
     } catch (error) {
       throw Error(error);
     }
