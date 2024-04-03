@@ -59,17 +59,15 @@ export default function FilterListBar({
   function sortByTheme(theme) {
     setEventsList(baseList.filter((event) => event.theme.includes(theme))); // event.theme.include(theme)
   }
-  /////////////////////////////////////////////////////////////////////////////////
   function handleThemeSelection(e) {
     const newTheme = e.target.value;
     setSelectedTheme(newTheme);
     sortByTheme(newTheme);
   }
-  ///////////////////////////////////////////////////////////////////////////
   function handleFromChange (e){
     
   }
-  ///////////////////////////////////////////////////////////////////////////////////////
+  
   return (
     // <div id="listBar">
     <div id="barFunc">
